@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Badge from '../components/Badge.astro';
+import Linkedin from '../components/icons/Linkedin.astro'
+import Github from '../components/icons/Github.astro'
+import Social from '../components/Social.astro'
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<section class="w-full lg:w-[740px] mx-auto py-44">
+			<img 
+				class="rounded-full w-12 h-12 mb-4"
+				src="/FotoMia.webp"
+				alt="RamonRivera photo"
+			/>
+			<h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-10">
+				Hola, soy Ramón Rivera 
+					<a href="https://www.linkedin.com/in/ramonfranciscoriveravalenzuela" target="_blank" rel="noopener" class="flex justify-center items-center">
+						<Badge>Disponible para trabajar</Badge>
+					</a>
+
+			</h1>
+			<h2 class="text-2xl opacity-80 text-wrap">
+				2 años de experiencia. Ingeniero en desarrollo y gestión de Software. 
+				Desarrollador Web. De Hermosillo, Sonora. Especializado en desarrollo Back End y Front End.  
+			</h2>
+
+			<ul>
+				<li>
+					<Social>
+						<Linkedin class="h-6 w-6" />
+						LinkedIn
+					</Social>
+				</li>
+				<li>
+					<a href="https://github.com/RamonRVexe">
+						<Github class="h6 w-6" />
+						Github
+					</a>
+				</li>
+			</ul>
+		</section>
+	</main>
+</Layout>
+
