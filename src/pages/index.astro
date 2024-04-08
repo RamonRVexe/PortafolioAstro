@@ -5,13 +5,16 @@ import Badge from '../components/Badge.astro';
 import Linkedin from '../components/icons/Linkedin.astro'
 import Github from '../components/icons/Github.astro'
 import Social from '../components/Social.astro'
+import Cv from '../components/icons/Cv.astro';
+import Experience from '../components/Experience.astro'
+import SectionContainer from '../components/SectionContainer.astro'
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Portfolio de Ramón Rivera">
 	<main>
-		<section class="w-full lg:w-[740px] mx-auto py-44">
+		<SectionContainer>
 			<img 
-				class="rounded-full w-12 h-12 mb-4"
+				class="rounded-full size-12 mb-4"
 				src="/FotoMia.webp"
 				alt="RamonRivera photo"
 			/>
@@ -22,26 +25,31 @@ import Social from '../components/Social.astro'
 					</a>
 
 			</h1>
-			<h2 class="text-2xl opacity-80 text-wrap">
+			<h2 class="text-xl opacity-80 text-wrap">
 				2 años de experiencia. Ingeniero en desarrollo y gestión de Software. 
 				Desarrollador Web. De Hermosillo, Sonora. Especializado en desarrollo Back End y Front End.  
 			</h2>
 
-			<ul>
-				<li>
-					<Social>
+			<nav class="flex gap-x-2 mt-8">
+				<Social href="https://www.linkedin.com/in/ramonfranciscoriveravalenzuela">
 						<Linkedin class="h-6 w-6" />
 						LinkedIn
-					</Social>
-				</li>
-				<li>
-					<a href="https://github.com/RamonRVexe">
-						<Github class="h6 w-6" />
-						Github
-					</a>
-				</li>
-			</ul>
-		</section>
+				</Social>
+					
+				<Social href="https://github.com/RamonRVexe">
+						<Github class="h-6 w-6" />
+							Github
+				</Social>
+				<Social href="https://drive.google.com/file/d/1ff9w_lQe-uebxIBk_KbkjZjjAnkt2zxW/view?usp=drive_link">
+					<Cv class="h-6 w-6" />
+						Descargar CV
+				</Social>
+			</nav>
+		</SectionContainer>
+		<SectionContainer>
+			<Experience />
+		</SectionContainer>
+
 	</main>
 </Layout>
 
