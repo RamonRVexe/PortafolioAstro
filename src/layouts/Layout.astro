@@ -1,48 +1,193 @@
 ---
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import SectionContainer from '../components/SectionContainer.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = 'Portafolio de Ramón Rivera — Full Stack Developer especializado en .NET, Angular, SQL Server y REST APIs. Más de 4 años de experiencia en entornos gubernamentales e institucionales.' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Ramón Rivera" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script is:inline>
+			(function () {
+				const stored = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = stored ?? (prefersDark ? 'dark' : 'light');
+				document.documentElement.classList.toggle('dark', theme === 'dark');
+			})();
+		</script>
 	</head>
-	<body>
+	<body class="text-secondary antialiased transition-colors duration-300">
+		<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
+			<div class="absolute inset-0 bg-surface transition-colors duration-300"></div>
+			<div class="absolute inset-0 bg-hero-gradient dark:bg-hero-gradient-dark transition-opacity duration-300"></div>
+			<div class="absolute top-1/4 -left-32 w-64 sm:w-96 h-64 sm:h-96 bg-accent/8 dark:bg-accent/10 rounded-full blur-3xl animate-float"></div>
+			<div
+				class="absolute bottom-1/4 -right-32 w-56 sm:w-80 h-56 sm:h-80 bg-purple-600/8 dark:bg-purple-600/10 rounded-full blur-3xl animate-float"
+				style="animation-delay: -3s"
+			>
+			</div>
+			<div
+				class="absolute inset-0 opacity-30 dark:opacity-50 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23000000%22 fill-opacity=%220.04%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] dark:bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.02%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"
+			>
+			</div>
+		</div>
+
 		<Header />
 		<slot />
-		<Footer />
+		<SectionContainer>
+			<Footer />
+		</SectionContainer>
+
+		<script>
+			const reveals = document.querySelectorAll('.reveal');
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('revealed');
+							observer.unobserve(entry.target);
+						}
+					});
+				},
+				{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+			);
+			reveals.forEach((el) => observer.observe(el));
+
+			const header = document.querySelector('header');
+			window.addEventListener(
+				'scroll',
+				() => {
+					if (!header) return;
+					header.classList.toggle('header-scrolled', window.scrollY > 20);
+				},
+				{ passive: true }
+			);
+		</script>
 	</body>
 </html>
+
 <style is:global>
 	:root {
-		color-scheme: light dark;
+		color-scheme: light;
+		--color-surface: 248 250 252;
+		--color-surface-raised: 255 255 255;
+		--color-surface-border: 226 232 240;
+		--color-text-primary: 15 23 42;
+		--color-text-secondary: 71 85 105;
+		--color-text-muted: 100 116 139;
+		--header-scrolled-bg: rgba(255, 255, 255, 0.9);
+		--header-scrolled-border: rgba(226, 232, 240, 0.9);
+		--header-scrolled-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+		--accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		scroll-behavior: smooth;
 
+	.dark {
+		color-scheme: dark;
+		--color-surface: 15 15 18;
+		--color-surface-raised: 22 22 29;
+		--color-surface-border: 42 42 53;
+		--color-text-primary: 248 250 252;
+		--color-text-secondary: 203 213 225;
+		--color-text-muted: 148 163 184;
+		--header-scrolled-bg: rgba(15, 15, 18, 0.9);
+		--header-scrolled-border: rgba(42, 42, 53, 0.9);
+		--header-scrolled-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 	}
-	body{
-		background-color: rgb(43, 42, 42);
-		display: flex; 	
+
+	html {
+		font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: rgb(var(--color-surface));
+		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
 	}
-	@media (prefers-reduced-motion: reduce){
-		html{
+
+	.reveal {
+		opacity: 0;
+		transform: translateY(28px);
+		transition:
+			opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+			transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.reveal.revealed {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.reveal-delay-1 {
+		transition-delay: 0.1s;
+	}
+	.reveal-delay-2 {
+		transition-delay: 0.2s;
+	}
+	.reveal-delay-3 {
+		transition-delay: 0.3s;
+	}
+	.reveal-delay-4 {
+		transition-delay: 0.4s;
+	}
+
+	::selection {
+		background-color: rgba(99, 102, 241, 0.3);
+		color: rgb(var(--color-text-primary));
+	}
+
+	header.header-scrolled {
+		background-color: var(--header-scrolled-bg);
+		backdrop-filter: blur(16px);
+		border-color: var(--header-scrolled-border);
+		box-shadow: var(--header-scrolled-shadow);
+	}
+
+	.nav-link.active {
+		color: rgb(var(--color-text-primary));
+		background-color: rgba(99, 102, 241, 0.1);
+	}
+
+	.dark .nav-link.active {
+		background-color: rgba(255, 255, 255, 0.08);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
 			scroll-behavior: auto;
+		}
+		.reveal {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
 		}
 	}
 </style>

@@ -1,0 +1,46 @@
+---
+const EDUCATION = [
+	{
+		degree: 'Ingeniería en Desarrollo y Gestión de Software',
+		school: 'Universidad Tecnológica de Hermosillo',
+		period: '2021 — 2023',
+	},
+	{
+		degree: 'TSU en Tecnologías de la Información',
+		school: 'Universidad Tecnológica de Hermosillo',
+		period: '2019 — 2021',
+	},
+];
+
+const ADDITIONAL = [
+	'Inglés técnico para documentación y desarrollo de software.',
+	'Experiencia trabajando con sistemas administrativos e institucionales.',
+	'Interés en arquitectura de software, APIs escalables y desarrollo backend.',
+	'Disponibilidad para oportunidades Full Stack, .NET y Angular.',
+];
+---
+
+<div class="space-y-6">
+	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+		{
+			EDUCATION.map((item, i) => (
+				<div
+					class={`reveal reveal-delay-${(i % 4) + 1} p-4 sm:p-5 rounded-2xl bg-surface-raised/80 border border-surface-border hover:border-accent/30 transition-all duration-300`}
+				>
+					<h3 class="text-base sm:text-lg font-bold text-primary mb-1">{item.degree}</h3>
+					<p class="text-sm text-muted font-medium mb-1">{item.school}</p>
+					<time class="text-xs font-mono text-accent">{item.period}</time>
+				</div>
+			))
+		}
+	</div>
+
+	<div class="reveal reveal-delay-3 p-4 sm:p-5 rounded-2xl bg-surface-raised/60 border border-surface-border">
+		<h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-3">Información adicional</h3>
+		<ul class="text-secondary text-sm leading-relaxed space-y-2 list-disc list-outside ms-4">
+			{ADDITIONAL.map((item) => (
+				<li class="text-pretty">{item}</li>
+			))}
+		</ul>
+	</div>
+</div>

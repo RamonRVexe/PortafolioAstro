@@ -1,81 +1,152 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import Badge from '../components/Badge.astro';
-import Linkedin from '../components/icons/Linkedin.astro'
-import Github from '../components/icons/Github.astro'
-import Social from '../components/Social.astro'
+import Linkedin from '../components/icons/Linkedin.astro';
+import Github from '../components/icons/Github.astro';
+import Social from '../components/Social.astro';
 import Cv from '../components/icons/Cv.astro';
-import Experience from '../components/Experience.astro'
-import SectionContainer from '../components/SectionContainer.astro'
+import Experience from '../components/Experience.astro';
+import SectionContainer from '../components/SectionContainer.astro';
 import SuiteCase from '../components/icons/SuiteCase.astro';
 import Code from '../components/icons/Code.astro';
 import Projects from '../components/Projects.astro';
 import Email from '../components/icons/Email.astro';
+import Contacto from '../components/Contacto.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Skills from '../components/Skills.astro';
+import Education from '../components/Education.astro';
+
+const STATS = [
+	{ value: '4+', label: 'Años de experiencia' },
+	{ value: '.NET & Angular', label: 'Especialización' },
+	{ value: 'Hermosillo', label: 'Ubicación' },
+];
 ---
 
-<Layout title="Portfolio de Ramón Rivera">
-	<main class="px-4">
+<Layout
+	title="Ramón Rivera — Full Stack Developer"
+	description="Desarrollador Full Stack especializado en .NET, Angular y SQL Server. Más de 4 años de experiencia en aplicaciones web escalables para entornos gubernamentales e institucionales."
+>
+	<main>
+		<!-- Hero -->
+		<SectionContainer id="top" class="pt-12 pb-16 sm:pt-16 sm:pb-20 md:pt-24 md:pb-28 scroll-mt-16">
+			<div class="flex flex-col md:flex-row items-center md:items-start gap-8 sm:gap-10 md:gap-14">
+				<div class="reveal shrink-0 relative group">
+					<div
+						class="absolute -inset-1 bg-gradient-to-br from-accent via-purple-500 to-violet-400 rounded-full blur opacity-30 dark:opacity-40 group-hover:opacity-50 dark:group-hover:opacity-60 transition-opacity duration-500"
+					>
+					</div>
+					<div
+						class="relative size-36 sm:size-48 md:size-56 rounded-full overflow-hidden ring-2 ring-surface-border shadow-2xl bg-surface-raised"
+					>
+						<img
+							id="about"
+							class="size-full object-cover object-[center_30%]"
+							src="/FotoMia-landscape.png"
+							alt="Foto de Ramón Rivera"
+							width="400"
+							height="400"
+							loading="eager"
+						/>
+					</div>
+				</div>
 
-		<SectionContainer class="py-44 pb-25">
-			<img 
-				id="about"	
-				class="rounded-full size-64 mb-4"
-				src="/FotoMia.webp"
-				alt="RamonRivera photo"
-			/>
-			<h1 class="text-white text-3xl  md:text-4xl lg:tect-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-				Hola, soy Ramón Rivera 
-					<a href="https://www.linkedin.com/in/ramonfranciscoriveravalenzuela" target="_blank" rel="noopener" class="flex justify-center items-center">
-						<Badge>Disponible para trabajar</Badge>
-					</a>
+				<div class="flex-1 text-center md:text-left w-full min-w-0">
+					<div class="reveal reveal-delay-1 flex flex-wrap justify-center md:justify-start gap-3 mb-4">
+						<a
+							href="https://www.linkedin.com/in/ramonriveradev"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<Badge>Disponible para trabajar</Badge>
+						</a>
+					</div>
 
-			</h1>
-			<h2 class="text-xl lg:text-xl text-wrap mx-w-[700px]">
-				Ingeniero en desarrollo y gestión de software con 3 años de experiencia en el desarrollo web full stack.
-				Actualmente trabajo en el Gobierno del estado de Sonora, donde utilizo tecnologias como Angular, ASP.NET y Django para crear soluciones
-				eficientes y robustas. He trabajado en varios proyectos que han mejorado significativamente la eficiencia y la funcionalidad de los sitemas gubernamentales.
-			</h2>
+					<h1
+						class="reveal reveal-delay-2 text-2xl sm:text-4xl lg:text-5xl font-extrabold text-primary tracking-tight leading-tight mb-3 sm:mb-4"
+					>
+						Hola, soy
+						<span class="bg-gradient-to-r from-accent via-purple-500 to-violet-500 bg-clip-text text-transparent">
+							Ramón Rivera
+						</span>
+					</h1>
 
-			<nav class="flex gap-4 mt-8 flex-wrap">
-				<Social href="https://www.linkedin.com/in/ramonfranciscoriveravalenzuela">
-						<Linkedin class="h-4 w-4 md:size-6" />
-						LinkedIn
-				</Social>
-					
-				<Social href="https://github.com/RamonRVexe">
-						<Github class="h-4 w-4 md:size-6" />
-							Github
-				</Social>
-				<Social href="/CV2024ESP.pdf">
-					<Cv class="h-4 w-4 md:size-6" />
-						Descargar CV
-				</Social>
-			</nav>
+					<p class="reveal reveal-delay-2 text-base sm:text-lg md:text-l text-accent font-semibold mb-3 sm:mb-4">
+						Full Stack Developer · .NET · Angular · SQL Server · REST APIs
+					</p>
+
+					<p
+						class="reveal reveal-delay-3 text-secondary text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0"
+					>
+						Desarrollador Full Stack especializado en tecnologías .NET y Angular con más de 4 años de experiencia
+						desarrollando aplicaciones web escalables para entornos gubernamentales e institucionales. Enfocado en
+						arquitectura limpia, rendimiento y mejora continua.
+					</p>
+
+					<p class="reveal reveal-delay-3 text-muted text-xs sm:text-sm mt-3">
+						Hermosillo, Sonora, México
+					</p>
+
+					<nav class="reveal reveal-delay-4 flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3 mt-6 sm:mt-8">
+						<Social href="https://www.linkedin.com/in/ramonriveradev" aria-label="LinkedIn de Ramón Rivera">
+							<Linkedin class="size-4 sm:size-5 shrink-0" />
+							LinkedIn
+						</Social>
+						<Social href="https://github.com/RamonRVexe" aria-label="GitHub de Ramón Rivera">
+							<Github class="size-4 sm:size-5 shrink-0" />
+							GitHub
+						</Social>
+						<Social href="/CV_RamonRivera.pdf" aria-label="Currículum de Ramón Rivera">
+							<Cv class="size-4 sm:size-5 shrink-0" />
+							CV
+						</Social>
+					</nav>
+				</div>
+			</div>
+
+			<!-- Stats -->
+			<div
+				class="reveal reveal-delay-4 grid grid-cols-3 gap-2 sm:gap-4 mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-surface-border"
+			>
+				{
+					STATS.map((stat) => (
+						<div class="text-center md:text-left px-1">
+							<p class="text-base sm:text-2xl md:text-3xl font-bold text-primary leading-tight">{stat.value}</p>
+							<p class="text-[10px] sm:text-sm text-muted mt-0.5 sm:mt-1 leading-snug">{stat.label}</p>
+						</div>
+					))
+				}
+			</div>
 		</SectionContainer>
-		<SectionContainer id="experiencia" class="pb-24">
-			<h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
-				<SuiteCase class="size-7" />
-				Experiencia Laboral
-			</h2>
+
+		<!-- Skills -->
+		<SectionContainer id="habilidades" class="pb-16 sm:pb-24">
+			<SectionTitle title="Habilidades clave" subtitle="Stack alineado con mi perfil profesional actual" />
+			<Skills />
+		</SectionContainer>
+
+		<!-- Experience -->
+		<SectionContainer id="experiencia" class="pb-16 sm:pb-24">
+			<SectionTitle icon={SuiteCase} title="Experiencia profesional" subtitle="Trayectoria en desarrollo web institucional y gubernamental" />
 			<Experience />
 		</SectionContainer>
 
-		<SectionContainer id="proyectos" class="pb-24" >
-			<h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
-				<Code class="size-7" />
-				Proyectos
-			</h2>
+		<!-- Projects -->
+		<SectionContainer id="proyectos" class="pb-16 sm:pb-24">
+			<SectionTitle icon={Code} title="Proyectos destacados" subtitle="Plataformas institucionales de alto impacto" />
 			<Projects />
 		</SectionContainer>
 
-		<SectionContainer id="contacto">
-			<h2 class="text-2xl font-semibold mb-6 flex gap-x-3 items-center">
-				<Email class="size-7" />
-				Contacto
-			</h2>
-			
+		<!-- Education -->
+		<SectionContainer id="educacion" class="pb-16 sm:pb-24">
+			<SectionTitle title="Educación" subtitle="Formación académica en tecnologías de la información" />
+			<Education />
+		</SectionContainer>
+
+		<!-- Contact -->
+		<SectionContainer id="contacto" class="pb-16 sm:pb-24">
+			<SectionTitle icon={Email} title="Contacto" subtitle="¿Hablamos? Estoy abierto a oportunidades Full Stack, .NET y Angular" />
+			<Contacto />
 		</SectionContainer>
 	</main>
 </Layout>
-

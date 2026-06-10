@@ -1,0 +1,40 @@
+---
+const SKILL_GROUPS = [
+	{
+		category: 'Frontend',
+		skills: ['Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'RxJS', 'Responsive Design'],
+	},
+	{
+		category: 'Backend',
+		skills: ['ASP.NET', 'C#', 'Python', 'Falcon', 'Django REST', 'PHP', 'Laravel', 'REST APIs'],
+	},
+	{
+		category: 'Base de datos',
+		skills: ['SQL Server', 'MySQL', 'Stored Procedures', 'Query Optimization', 'Views', 'Functions'],
+	},
+	{
+		category: 'Herramientas',
+		skills: ['Git', 'GitHub', 'GitLab', 'Postman', 'VS Code', 'Linux'],
+	},
+];
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+	{
+		SKILL_GROUPS.map((group, i) => (
+			<div
+				class={`reveal reveal-delay-${(i % 4) + 1} group p-4 sm:p-5 rounded-2xl bg-surface-raised/80 border border-surface-border hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5 dark:hover:shadow-accent/5`}
+			>
+				<h3 class="text-xs sm:text-sm font-semibold text-accent uppercase tracking-wider mb-3">
+					{group.category}
+				</h3>
+				<div class="flex flex-wrap gap-1.5 sm:gap-2">
+					{group.skills.map((skill) => (
+						<span class="px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-secondary bg-black/5 dark:bg-white/5 rounded-lg border border-black/5 dark:border-white/5 font-mono group-hover:border-accent/20 transition-colors">
+							{skill}
+						</span>
+					))}
+				</div>
+			</div>
+		))
+	}

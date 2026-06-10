@@ -1,36 +1,53 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
+import ExperienceItem from './ExperienceItem.astro';
 
-const EXPERIENCIE = [   
-    {
-        date: 'Septiembre 2022 - actualidad',
-        title: 'Desarrollador Web Full stack - Gobierno del estado de Sonora',
-        description: 'Desarrollo módulos interactivos utilizando angular para el front end y creo endpoints con falcon(Python) y ASP.NET para el back end. soy responsable de la implementación y mejoras continuas, asegurando que las soluciones sean escalables y eficientes.',
-        link:''
-    },
-    {
-        date: 'Septiembre 2021 - Septiembre 2022',
-        title: 'Desarrollador web Full stack - Tecnergy',
-        description: 'Desarrollé sistemas web internos y revitalicé sistemas obsoletos utilizando PHP, SQL, Angular y Laravel. Mejore la eficiencia de los sistemas, reduciendo el tiempo de carga en un 30%.',
-        link:''
-    },
-    {
-        date:'Marzo 2021 - Agosto 2021',
-        title: 'Practicante Desarrollador Web - Interlogic',
-        description: 'Desarrolle un sistema web para que los tecnicos revisen errores en los registros de cajeros automaticos de la empresa, implementando el back end como PHP, Pyton y servicios de AWS y diseñando el front end con HTML, CSS y JavaScript.'
-    }
-
-
-]
+const EXPERIENCE = [
+	{
+		date: 'Enero 2023 — Actualidad · Hermosillo, Sonora',
+		title: 'Desarrollador Full Stack',
+		company: 'Gobierno del Estado de Sonora',
+		highlights: [
+			'Desarrollo de módulos complejos en Angular con formularios reactivos, validaciones dinámicas y arquitectura modular.',
+			'Diseño e implementación de APIs RESTful con ASP.NET y Python (Falcon).',
+			'Integración de procesos backend con SQL Server y procedimientos almacenados.',
+			'Optimización de procesos administrativos y mejora de experiencia de usuario.',
+			'Implementación de nuevas funcionalidades, mantenimiento correctivo y mejora continua.',
+			'Participación en análisis técnico y definición de soluciones institucionales.',
+		],
+		tags: ['Angular', 'ASP.NET', 'C#', 'Falcon', 'SQL Server', 'REST APIs'],
+	},
+	{
+		date: 'Junio 2021 — Diciembre 2022 · México',
+		title: 'Desarrollador Web Full Stack',
+		company: 'Tecnergy',
+		highlights: [
+			'Desarrollo de aplicaciones web utilizando Angular, Laravel, PHP y SQL.',
+			'Modernización de sistemas heredados mejorando rendimiento y experiencia de usuario.',
+			'Optimización frontend y consultas SQL reduciendo tiempos de carga aproximadamente un 30%.',
+			'Implementación de lógica backend y administración de bases de datos.',
+		],
+		tags: ['Angular', 'Laravel', 'PHP', 'SQL', 'MySQL'],
+	},
+	{
+		date: 'Enero 2021 — Junio 2021 · México',
+		title: 'Desarrollador Web',
+		company: 'Interlogic',
+		highlights: [
+			'Desarrollo de sistema de monitoreo para registros de errores en cajeros automáticos.',
+			'Implementación backend utilizando PHP y Python.',
+			'Diseño de interfaces frontend con HTML, CSS y JavaScript.',
+		],
+		tags: ['PHP', 'Python', 'JavaScript', 'HTML', 'CSS'],
+	},
+];
 ---
-<ol class="relative border-s border-gray-200 ml-3">    
-    {
-        EXPERIENCIE.map(experiencie => (
-            <li class="mb-10 ms-4">
-                <ExperienceItem {... experiencie} />
-            </li>
-        ))
-    }              
-    
-</ol>
 
+<ol class="relative border-l-2 border-surface-border ml-2 sm:ml-3 space-y-2">
+	{
+		EXPERIENCE.map((item, i) => (
+			<li class={`reveal reveal-delay-${(i % 4) + 1} mb-8 sm:mb-10 ms-5 sm:ms-6`}>
+				<ExperienceItem {...item} />
+			</li>
+		))
+	}
+</ol>
