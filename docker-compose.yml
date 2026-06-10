@@ -4,4 +4,4 @@ services:
     container_name: portafolio-astro
     restart: unless-stopped
     ports:
-      - "8080:80"
+    - "8081:80"
